@@ -10,6 +10,11 @@ def factor(number):
     for i in listprimes(sqrt(number)):
         if (number % i == 0):
             factors.append(i)
-            factors.extend(factor(number/i))
+            temp = factor(number/i)
+            if not temp:
+                factors.append(i)
+                factors.append(number/i)
+            else:
+                factors.extend(temp)
             break
     return factors
